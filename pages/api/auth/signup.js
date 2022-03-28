@@ -11,6 +11,6 @@ export default async (req, res) => {
   )
     .db()
     .collection("users")
-    .insertOne({ email, password: hashPassword(password) });
+    .insertOne({ email, password: await hashPassword(password) });
   res.status(200).json({ message: "Successfully create user", data: { email, password, id: insertedId } });
 };
